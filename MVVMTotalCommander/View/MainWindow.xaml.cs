@@ -23,6 +23,8 @@ namespace MVVMTotalCommander.View
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new ViewModel.TCViewModel();
         }
     }
 }

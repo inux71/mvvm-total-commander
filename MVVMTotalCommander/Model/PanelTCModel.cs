@@ -69,16 +69,5 @@ namespace MVVMTotalCommander.Model
 
             return data;
         }  
-        
-        public string ChangeDirectory()
-        {
-            if (SelectedType == null)
-                return CurrentPath;
-
-            if (SelectedType.DType == Type.DIRECTORY)
-                return SelectedType.Path;
-
-            return CurrentPath;
-        }
     }
 }

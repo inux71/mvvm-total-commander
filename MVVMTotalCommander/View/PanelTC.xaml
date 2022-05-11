@@ -85,7 +85,7 @@
                 x:Name="drives"
                 >
                 <Behaviors:Interaction.Triggers>
-                    <Behaviors:EventTrigger 
+                    <Behaviors:EventTrigger
                         EventName="DropDownOpened"
                         SourceObject="{Binding ElementName=drives}"
                         >
@@ -97,7 +97,6 @@
                         SourceObject="{Binding ElementName=drives}"
                         >
                         <Behaviors:InvokeCommandAction Command="{Binding DriveSelectedCommand}"/>
-                        <Behaviors:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
                     </Behaviors:EventTrigger>
                 </Behaviors:Interaction.Triggers>
             </ComboBox>
@@ -116,8 +115,7 @@
                     EventName="SelectionChanged"
                     SourceObject="{Binding ElementName=data}"
                     >
-                    <Behaviors:InvokeCommandAction Command="{Binding ChangeDirectoryCommand}"/>
-                    <Behaviors:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+                    <Behaviors:InvokeCommandAction Command="{Binding PathChangeCommand}"/>
                 </Behaviors:EventTrigger>
             </Behaviors:Interaction.Triggers>
         </ListBox>

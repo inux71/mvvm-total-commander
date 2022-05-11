@@ -20,6 +20,7 @@ namespace MVVMTotalCommander.ViewModel
             {
                 panelTCModel.CurrentPath = value;
                 OnPropertyChanged(nameof(CurrentPath));
+                Types = panelTCModel.LoadData();
             }
         }
 
@@ -73,16 +74,14 @@ namespace MVVMTotalCommander.ViewModel
                 o => true
             ));
 
-        private ICommand loadDataCommand;
-        public ICommand LoadDataCommand => loadDataCommand ?? (loadDataCommand = new RelayCommand(
-                o => Types = panelTCModel.LoadData(),
-                o => true
-            ));
-
-        private ICommand changeDirectoryCommand;
-        public ICommand ChangeDirectoryCommand => changeDirectoryCommand ?? (changeDirectoryCommand = new RelayCommand(
-                o => CurrentPath = panelTCModel.ChangeDirectory(),
-                o => true
+        private ICommand pathChangeCommand;
+        public ICommand PathChangeCommand => pathChangeCommand ?? (pathChangeCommand = new RelayCommand(
+                o =>
+                {
+                    if (SelectedType.DType == Model.Type.DIRECTORY)
+                        CurrentPath = SelectedType.Path;
+                },
+                o => SelectedType != null
             ));
 
         private void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

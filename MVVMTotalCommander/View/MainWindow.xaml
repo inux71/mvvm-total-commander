@@ -29,11 +29,13 @@
 
             <local:PanelTC
                 Grid.Column="0"
+                DataContext="{Binding Source}"
                 >
             </local:PanelTC>
 
             <local:PanelTC
                 Grid.Column="1"
+                DataContext="{Binding Destination}"
                 >
             </local:PanelTC>
         </Grid>
@@ -48,6 +50,7 @@
             Foreground="#636E72"
             FontSize="24"
             FontWeight="Bold"
+            Command="{Binding CopyCommand}"
             >
             Copy
         </Button>

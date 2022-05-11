@@ -62,6 +62,7 @@
     <Compile Include="Model\PanelTCModel.cs" />
     <Compile Include="ViewModel\PanelTCViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\TCViewModel.cs" />
     <Compile Include="View\PanelTC.xaml.cs">
       <DependentUpon>PanelTC.xaml</DependentUpon>
     </Compile>
