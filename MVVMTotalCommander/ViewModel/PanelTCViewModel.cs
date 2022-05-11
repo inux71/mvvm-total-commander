@@ -42,6 +42,25 @@ namespace MVVMTotalCommander.ViewModel
             }
         }
 
+        public Model.DataType SelectedType
+        {
+            get => panelTCModel.SelectedType;
+            set
+            {
+                panelTCModel.SelectedType = value;
+                OnPropertyChanged(nameof(SelectedType));
+            }
+        }
+        public List<Model.DataType> Types
+        {
+            get => panelTCModel.Types;
+            set
+            {
+                panelTCModel.Types = panelTCModel.LoadData();
+                OnPropertyChanged(nameof(Types));
+            }
+        }
+
         private ICommand loadDrivesCommand;
         public ICommand LoadDrivesCommand => loadDrivesCommand ?? (loadDrivesCommand = new RelayCommand(
                 o => Drives = panelTCModel.LoadDrives(),
@@ -51,6 +70,12 @@ namespace MVVMTotalCommander.ViewModel
         private ICommand driveSelectedCommand;
         public ICommand DriveSelectedCommand => driveSelectedCommand ?? (driveSelectedCommand = new RelayCommand(
                 o => CurrentPath = SelectedDrive,
+                o => true
+            ));
+
+        private ICommand loadDataCommand;
+        public ICommand LoadDataCommand => loadDataCommand ?? (loadDataCommand = new RelayCommand(
+                o => Types = panelTCModel.LoadData(),
                 o => true
             ));
 

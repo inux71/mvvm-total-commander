@@ -11,27 +11,12 @@
              Background="Transparent"
              >
     <UserControl.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Foreground" Value="#DfE6E9"/>
-            <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-
-        <Style TargetType="ComboBoxItem">
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Background" Value="#DfE6E9"/>
-            <Setter Property="Foreground" Value="#636E72"/>
-        </Style>
-
         <Style TargetType="ListBoxItem">
             <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Background" Value="#DfE6E9"/>
             <Setter Property="Foreground" Value="#636E72"/>
         </Style>
     </UserControl.Resources>
-
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -49,6 +34,12 @@
 
             <TextBlock
                 Grid.Column="0"
+                Foreground="#DfE6E9"
+                FontSize="24"
+                TextAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="10"
                 >
                 Path:
             </TextBlock>
@@ -57,7 +48,9 @@
                 Grid.Column="1"
                 Background="#DfE6E9"
                 Foreground="#636E72"
-                TextAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="24"
+                Margin="10"
                 Padding="5"
                 Text="{Binding CurrentPath}"
                 >
@@ -70,16 +63,23 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             >
-            <TextBlock>
+            <TextBlock
+                Foreground="#DfE6E9"
+                FontSize="24"
+                TextAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="10"
+                >
                 Drive:
             </TextBlock>
 
             <ComboBox
                 Margin="10"
-                Width="60"
                 FontSize="24"
                 Background="#DfE6E9"
                 Foreground="#636E72"
+                Width="60"
                 ItemsSource="{Binding Drives}"
                 SelectedItem="{Binding SelectedDrive}"
                 x:Name="drives"
@@ -97,6 +97,7 @@
                         SourceObject="{Binding ElementName=drives}"
                         >
                         <Behaviors:InvokeCommandAction Command="{Binding DriveSelectedCommand}"/>
+                        <Behaviors:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
                     </Behaviors:EventTrigger>
                 </Behaviors:Interaction.Triggers>
             </ComboBox>
@@ -104,9 +105,10 @@
 
         <ListBox
             Grid.Row="2"
-            Background="#DfE6E9"
-            Foreground="#636E72"
             Margin="10"
+            Background="#DfE6E9"
+            ItemsSource="{Binding Types}"
+            SelectedItem="{Binding SelectedType}"
             >
         </ListBox>
     </Grid>

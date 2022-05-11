@@ -19,6 +19,46 @@ namespace MVVMTotalCommander.Model
             set => drives = value;
         }
 
+        public DataType SelectedType { get; set; }
+        private List<DataType> types { get; set; }
+        public List<DataType> Types
+        {
+            get => types;
+            set => types = value;
+        }
+
         public List<string> LoadDrives() => Directory.GetLogicalDrives().ToList();
+        public List<DataType> LoadData()
+        {
+            List<string> directories = new List<string>();
+            directories.AddRange(Directory.GetDirectories(CurrentPath).ToList());
+
+            List<string> files = new List<string>();
+            files.AddRange(Directory.GetFiles(CurrentPath).ToList());
+
+            List<DataType> data = new List<DataType>();
+
+            directories.ForEach(d =>
+            {
+                data.Add(new DataType 
+                {
+                    DType = Type.DIRECTORY, 
+                    Path = d, 
+                    Name = Path.GetFileName(d) 
+                });
+            });
+
+            files.ForEach(f =>
+            {
+                data.Add(new DataType
+                {
+                    DType = Type.FILE,
+                    Path = f,
+                    Name = Path.GetFileName(f)
+                });
+            });
+
+            return data;
+        }   
     }
 }
