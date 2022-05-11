@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MVVMTotalCommander.View"
+             xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="800" 
              d:DesignWidth="350"
@@ -78,7 +79,18 @@
                 FontSize="24"
                 Background="#DfE6E9"
                 Foreground="#636E72"
+                ItemsSource="{Binding Drives}"
+                SelectedItem="{Binding SelectedDrive}"
+                x:Name="drives"
                 >
+                <Behaviors:Interaction.Triggers>
+                    <Behaviors:EventTrigger 
+                        EventName="DropDownOpened"
+                        SourceObject="{Binding ElementName=drives}"
+                        >
+                        <Behaviors:InvokeCommandAction Command="{Binding LoadDrivesCommand}"/>
+                    </Behaviors:EventTrigger>
+                </Behaviors:Interaction.Triggers>
             </ComboBox>
         </StackPanel>
 
