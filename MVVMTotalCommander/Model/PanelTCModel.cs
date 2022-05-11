@@ -9,6 +9,8 @@ namespace MVVMTotalCommander.Model
 {
     internal sealed class PanelTCModel
     {
+        public string CurrentPath { get; set; }
+
         public string SelectedDrive { get; set; }
         private List<string> drives { get; set; }
         public List<string> Drives

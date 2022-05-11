@@ -13,6 +13,16 @@ namespace MVVMTotalCommander.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         private Model.PanelTCModel panelTCModel;
 
+        public string CurrentPath
+        {
+            get => panelTCModel.CurrentPath;
+            set
+            {
+                panelTCModel.CurrentPath = value;
+                OnPropertyChanged(nameof(CurrentPath));
+            }
+        }
+
         public string SelectedDrive
         {
             get => panelTCModel.SelectedDrive;
@@ -35,6 +45,12 @@ namespace MVVMTotalCommander.ViewModel
         private ICommand loadDrivesCommand;
         public ICommand LoadDrivesCommand => loadDrivesCommand ?? (loadDrivesCommand = new RelayCommand(
                 o => Drives = panelTCModel.LoadDrives(),
+                o => true
+            ));
+
+        private ICommand driveSelectedCommand;
+        public ICommand DriveSelectedCommand => driveSelectedCommand ?? (driveSelectedCommand = new RelayCommand(
+                o => CurrentPath = SelectedDrive,
                 o => true
             ));
 

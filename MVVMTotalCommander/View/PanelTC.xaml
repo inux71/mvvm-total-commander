@@ -59,6 +59,7 @@
                 Foreground="#636E72"
                 TextAlignment="Left"
                 Padding="5"
+                Text="{Binding CurrentPath}"
                 >
             </TextBlock>
         </Grid>
@@ -89,6 +90,13 @@
                         SourceObject="{Binding ElementName=drives}"
                         >
                         <Behaviors:InvokeCommandAction Command="{Binding LoadDrivesCommand}"/>
+                    </Behaviors:EventTrigger>
+
+                    <Behaviors:EventTrigger
+                        EventName="SelectionChanged"
+                        SourceObject="{Binding ElementName=drives}"
+                        >
+                        <Behaviors:InvokeCommandAction Command="{Binding DriveSelectedCommand}"/>
                     </Behaviors:EventTrigger>
                 </Behaviors:Interaction.Triggers>
             </ComboBox>
