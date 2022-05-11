@@ -37,6 +37,15 @@ namespace MVVMTotalCommander.Model
             files.AddRange(Directory.GetFiles(CurrentPath).ToList());
 
             List<DataType> data = new List<DataType>();
+            DirectoryInfo directoryInfo = new DirectoryInfo(CurrentPath);
+
+            if (directoryInfo.Parent != null)
+                data.Add(new DataType
+                {
+                    DType = Type.DIRECTORY,
+                    Path = directoryInfo.Parent.FullName,
+                    Name = "..."
+                });
 
             directories.ForEach(d =>
             {
@@ -59,6 +68,17 @@ namespace MVVMTotalCommander.Model
             });
 
             return data;
-        }   
+        }  
+        
+        public string ChangeDirectory()
+        {
+            if (SelectedType == null)
+                return CurrentPath;
+
+            if (SelectedType.DType == Type.DIRECTORY)
+                return SelectedType.Path;
+
+            return CurrentPath;
+        }
     }
 }

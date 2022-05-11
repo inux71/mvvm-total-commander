@@ -109,7 +109,17 @@
             Background="#DfE6E9"
             ItemsSource="{Binding Types}"
             SelectedItem="{Binding SelectedType}"
+            x:Name="data"
             >
+            <Behaviors:Interaction.Triggers>
+                <Behaviors:EventTrigger
+                    EventName="SelectionChanged"
+                    SourceObject="{Binding ElementName=data}"
+                    >
+                    <Behaviors:InvokeCommandAction Command="{Binding ChangeDirectoryCommand}"/>
+                    <Behaviors:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+                </Behaviors:EventTrigger>
+            </Behaviors:Interaction.Triggers>
         </ListBox>
     </Grid>
 </UserControl>

@@ -79,6 +79,12 @@ namespace MVVMTotalCommander.ViewModel
                 o => true
             ));
 
+        private ICommand changeDirectoryCommand;
+        public ICommand ChangeDirectoryCommand => changeDirectoryCommand ?? (changeDirectoryCommand = new RelayCommand(
+                o => CurrentPath = panelTCModel.ChangeDirectory(),
+                o => true
+            ));
+
         private void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         public PanelTCViewModel() => panelTCModel = new Model.PanelTCModel();
     }
