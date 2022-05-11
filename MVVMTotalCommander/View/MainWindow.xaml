@@ -1,0 +1,55 @@
+﻿<Window x:Class="MVVMTotalCommander.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMTotalCommander.View"
+        mc:Ignorable="d"
+        Title="Total Commander"
+        Height="800"
+        Width="700"
+        ResizeMode="NoResize"
+        Background="#2D3436"
+        >
+    <Grid
+        Margin="10"
+        >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <local:PanelTC
+                Grid.Column="0"
+                >
+            </local:PanelTC>
+
+            <local:PanelTC
+                Grid.Column="1"
+                >
+            </local:PanelTC>
+        </Grid>
+
+        <Button
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Padding="10"
+            Width="100"
+            Background="#DfE6E9"
+            Foreground="#636E72"
+            FontSize="24"
+            FontWeight="Bold"
+            >
+            Copy
+        </Button>
+    </Grid>
+</Window>

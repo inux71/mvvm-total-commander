@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="MVVMTotalCommander.View.PanelTC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMTotalCommander.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" 
+             d:DesignWidth="350"
+             Background="Transparent"
+             >
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="#DfE6E9"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="#DfE6E9"/>
+            <Setter Property="Foreground" Value="#636E72"/>
+        </Style>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="#DfE6E9"/>
+            <Setter Property="Foreground" Value="#636E72"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                >
+                Path:
+            </TextBlock>
+
+            <TextBlock
+                Grid.Column="1"
+                Background="#DfE6E9"
+                Foreground="#636E72"
+                TextAlignment="Left"
+                Padding="5"
+                >
+            </TextBlock>
+        </Grid>
+
+        <StackPanel
+            Grid.Row="1"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            >
+            <TextBlock>
+                Drive:
+            </TextBlock>
+
+            <ComboBox
+                Margin="10"
+                Width="60"
+                FontSize="24"
+                Background="#DfE6E9"
+                Foreground="#636E72"
+                >
+            </ComboBox>
+        </StackPanel>
+
+        <ListBox
+            Grid.Row="2"
+            Background="#DfE6E9"
+            Foreground="#636E72"
+            Margin="10"
+            >
+        </ListBox>
+    </Grid>
+</UserControl>

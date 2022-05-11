@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MVVMTotalCommander
+namespace MVVMTotalCommander.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy PanelTC.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PanelTC : UserControl
     {
-        public MainWindow()
+        public PanelTC()
         {
             InitializeComponent();
         }
