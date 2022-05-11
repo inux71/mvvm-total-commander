@@ -16,7 +16,7 @@
             <Setter Property="Foreground" Value="#636E72"/>
         </Style>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using System.ComponentModel;
 using System.IO;
 
@@ -39,7 +34,10 @@ namespace MVVMTotalCommander.ViewModel
                 o =>
                 {
                     if (source.SelectedType.DType == Model.Type.FILE && destination.CurrentPath != null)
+                    {
                         File.Copy(source.SelectedType.Path, Path.Combine(destination.CurrentPath, source.SelectedType.Name));
+                        Destination.CurrentPath = Destination.CurrentPath;
+                    }
                 },
                 o => source.SelectedType != null
             ));
