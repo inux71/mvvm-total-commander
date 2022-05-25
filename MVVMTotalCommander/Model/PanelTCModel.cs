@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System;
 
 namespace MVVMTotalCommander.Model
 {
@@ -27,44 +28,53 @@ namespace MVVMTotalCommander.Model
         public List<string> LoadDrives() => Directory.GetLogicalDrives().ToList();
         public List<DataType> LoadData()
         {
-            List<string> directories = new List<string>();
-            directories.AddRange(Directory.GetDirectories(CurrentPath).ToList());
-
-            List<string> files = new List<string>();
-            files.AddRange(Directory.GetFiles(CurrentPath).ToList());
-
             List<DataType> data = new List<DataType>();
-            DirectoryInfo directoryInfo = new DirectoryInfo(CurrentPath);
 
-            if (directoryInfo.Parent != null)
-                data.Add(new DataType
-                {
-                    DType = Type.DIRECTORY,
-                    Path = directoryInfo.Parent.FullName,
-                    Name = "..."
-                });
-
-            directories.ForEach(d =>
+            try
             {
-                data.Add(new DataType 
-                {
-                    DType = Type.DIRECTORY, 
-                    Path = d, 
-                    Name = Path.GetFileName(d) 
-                });
-            });
+                List<string> directories = new List<string>();
+                directories.AddRange(Directory.GetDirectories(CurrentPath).ToList());
 
-            files.ForEach(f =>
+                List<string> files = new List<string>();
+                files.AddRange(Directory.GetFiles(CurrentPath).ToList());
+
+                DirectoryInfo directoryInfo = new DirectoryInfo(CurrentPath);
+
+                if (directoryInfo.Parent != null)
+                    data.Add(new DataType
+                    {
+                        DType = Type.DIRECTORY,
+                        Path = directoryInfo.Parent.FullName,
+                        Name = "..."
+                    });
+
+                directories.ForEach(d =>
+                {
+                    data.Add(new DataType
+                    {
+                        DType = Type.DIRECTORY,
+                        Path = d,
+                        Name = Path.GetFileName(d)
+                    });
+                });
+
+                files.ForEach(f =>
+                {
+                    data.Add(new DataType
+                    {
+                        DType = Type.FILE,
+                        Path = f,
+                        Name = Path.GetFileName(f)
+                    });
+                });
+
+                return data;
+            } 
+            
+            catch (Exception)
             {
-                data.Add(new DataType
-                {
-                    DType = Type.FILE,
-                    Path = f,
-                    Name = Path.GetFileName(f)
-                });
-            });
-
-            return data;
+                return data;
+            }
         }  
     }
 }
