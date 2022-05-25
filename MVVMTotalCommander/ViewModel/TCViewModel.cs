@@ -1,12 +1,12 @@
 ﻿using System.Windows.Input;
 using System.ComponentModel;
-using System.IO;
 
 namespace MVVMTotalCommander.ViewModel
 {
     internal sealed class TCViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private Model.TCModel tcModel = new Model.TCModel();
 
         private PanelTCViewModel source;
         public PanelTCViewModel Source
@@ -35,7 +35,7 @@ namespace MVVMTotalCommander.ViewModel
                 {
                     if (source.SelectedType.DType == Model.Type.FILE && destination.CurrentPath != null)
                     {
-                        File.Copy(source.SelectedType.Path, Path.Combine(destination.CurrentPath, source.SelectedType.Name));
+                        tcModel.Copy(source.SelectedType.Path, source.SelectedType.Name, destination.CurrentPath);
                         Destination.CurrentPath = Destination.CurrentPath;
                     }
                 },

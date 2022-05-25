@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\DataType.cs" />
     <Compile Include="Model\PanelTCModel.cs" />
+    <Compile Include="Model\TCModel.cs" />
     <Compile Include="ViewModel\PanelTCViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\TCViewModel.cs" />
